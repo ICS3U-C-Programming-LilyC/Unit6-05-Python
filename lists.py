@@ -12,7 +12,7 @@ def calc_average(list_of_marks):
     sum = 0
 
     # Check to see if 0 was entered, if it was then return -1 to function.
-    if (len(list_of_marks) == 0):
+    if len(list_of_marks) == 0:
         return -1
 
     else:
@@ -45,14 +45,17 @@ def main():
             # Converting user input into a integer.
             mark_as_float = float(mark_as_string)
 
-            # Checking if the user inputted -1.
-            if (mark_as_float == -1):
-                # Loop will end using a break statement and the user's average will be calculated.
-                average = calc_average(list_of_user_marks)
+            # Check if the user wants to break
+            if mark_as_float == -1:
                 break
 
-            # Appending the inputted marks to the list.
-            list_of_user_marks.append(mark_as_float)
+            # Check if the mark is outside the valid range
+            if mark_as_float < 0 or mark_as_float > 100:
+                # Display error message for invalid input.
+                print("Invalid mark.")
+            else:
+                # Append valid numbers to the list
+                list_of_user_marks.append(mark_as_float)
 
         # Catching any errors.
         except:
@@ -60,8 +63,14 @@ def main():
             # Using a continue statement to continue asking for the user's marks.
             continue
 
-    # Displaying the average of the user's marks.
-    print("The average of your marks entered is {:.2F} %.".format(average))
+    # Check if the user entered any marks.
+    if len(list_of_user_marks) == 0:
+        print("Invalid mark")
+    else:
+        # Call function to display the average.
+        average = calc_average(list_of_user_marks)
+        # Displaying the average of the user's marks.
+        print("The average of your marks entered is {:.2F} %.".format(average))
 
 
 if __name__ == "__main__":
