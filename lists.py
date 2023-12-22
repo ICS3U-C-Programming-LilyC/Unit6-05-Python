@@ -11,8 +11,8 @@ def calc_average(list_of_marks):
     # Initializing variable sum to 0
     sum = 0
 
-    # Check to see if -1 was entered, if it is then return -1 to function.
-    if len(list_of_marks) == 0:
+    # Check to see if 0 was entered, if it was then return -1 to function.
+    if (len(list_of_marks) == 0):
         return -1
 
     else:
@@ -35,29 +35,29 @@ def main():
     # Declaring list for user's marks.
     list_of_user_marks = []
 
-    # Using a for loop to repeat this part of the program
+    # Using a for loop to repeat this part of the program.
     for counter in range(0, 100):
-        # Getting user input.
+        # Getting user input as a string.
         mark_as_string = input("Enter a mark: ")
 
         # Using a try catch to catch any invalid inputs.
         try:
             # Converting user input into a integer.
-            mark_as_int = int(mark_as_string)
+            mark_as_float = float(mark_as_string)
 
             # Checking if the user inputted -1.
-            if mark_as_int == -1:
+            if (mark_as_float == -1):
                 # Loop will end using a break statement and the user's average will be calculated.
                 average = calc_average(list_of_user_marks)
                 break
 
             # Appending the inputted marks to the list.
-            list_of_user_marks.append(mark_as_int)
+            list_of_user_marks.append(mark_as_float)
 
         # Catching any errors.
         except:
             print("Invalid mark.")
-            # Using a continue statement to allow continue asking for the user's marks.
+            # Using a continue statement to continue asking for the user's marks.
             continue
 
     # Displaying the average of the user's marks.
